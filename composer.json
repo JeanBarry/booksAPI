@@ -1,0 +1,10 @@
+{
+    "name": "jean/simple-api",
+    "authors": [
+        {
+            "name": "Jean Barry",
+            "email": "jfvbarry@gmail.com"
+        }
+    ],
+    "require": {}
+}
