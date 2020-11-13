@@ -28,7 +28,7 @@ class Database{
         echo 'Connection Error: ' . $e->getMessage();
       }
 
-      return $this->url;
+      return $this->conn;
     }
 
 }
