@@ -1,0 +1,57 @@
+
+html{
+    font-size: 10px;
+}
+
+*,*::before,*::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    height: 10vh;
+    background-color: rgb(37, 36, 36);
+    display: flex;
+    align-items: center;
+    color: rgb(255, 255, 255);
+}
+
+.nav-list{
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    list-style-type: none;
+}
+
+.nav-item{
+    padding-left: 35px;
+}
+
+.nav-item a{
+    text-decoration: none;
+}
+
+.nav-item a:visited{
+    color: rgb(255, 255, 255);
+}
+
+
+.main-section{
+    height: 90vh;
+    background-color: rgb(146, 205, 245);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.main-title{
+    font-size: 5rem;
+}
+
+
+.main-subtitle{
+    font-size: 2rem;
+}
