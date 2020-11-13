@@ -14,16 +14,11 @@ class Database{
       $this->conn = null;
 
       try { 
-        $this->url = getenv('JAWSDB_URL');
-        $this->dbstr = substr("$url", 8);
-        $this->user = explode(":", $dbstr)[0];
-        $this->pass = explode("@", explode(":", $dbstr)[1])[0];
-        $this->host = explode("@", explode(":", $dbstr)[1])[1];
-        $this->port = explode("/", explode(":", $dbstr)[2])[0];
-        $this->database = explode("/", explode(":", $dbstr)[2])[1];
-
-        $this->conn = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->database, $this->user, $this->pass);
-        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $newuri = $this->url = getenv('JAWSDB_URL');
+        $parsed = parse_url($newuri);
+        $dbname = ltrim($parsed['path']. '/'); // PATH has prepended / at the beginning, it needs to be removed
+        // Connecting to the database
+        $this->conn = new PDO("{$parsed['scheme']}:host={$parsed};$dbname={$dbname};charset=utf8mb4", $parsed['user'], $parsed['pass'], [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
       } catch(PDOException $e) {
         echo 'Connection Error: ' . $e->getMessage();
       }

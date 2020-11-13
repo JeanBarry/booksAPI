@@ -1,4 +1,7 @@
-<?php include_once('db.php'); ?>
+<?php 
+include_once('db.php'); 
+header('Access-Control-Allow-Origin: *');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +24,7 @@
         <section class="main-section">
             <h1 class="main-title">BooksAPI</h1>
             <p class="main-subtitle">Simple API for books</p>
-            <p class="main-subtitle"><?php  $database = new Database(); $db = $database->connect(); var_dump($db)?></p>
+            <p class="main-subtitle"><?php  $database = new Database(); $db = $database->connect(); var_dump($db);?></p>
         </section>
     </main>
     
