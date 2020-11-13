@@ -6,3 +6,5 @@ services:
       - "80:80"
     volumes:
       - .:/var/www/html
+    environment:
+      - CLEARDB_DATABASE_URL="${CLEARDB_DATABASE_URL}"
