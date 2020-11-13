@@ -2,11 +2,6 @@
 
 class Database{
     private $url;
-    private $host;
-    private $user;
-    private $pass;
-    private $port;
-    private $database;
     private $conn;
 
 
@@ -14,11 +9,20 @@ class Database{
       $this->conn = null;
 
       try { 
-        $newuri = $this->url = getenv('CLEARDB_DATABASE_URL');
-        $parsed = parse_url($newuri);
-        $dbname = ltrim($parsed['path']. '/'); // PATH has prepended / at the beginning, it needs to be removed
-        // Connecting to the database
-        $this->conn = new PDO("{$parsed['scheme']}:host={$parsed};$dbname={$dbname};charset=utf8mb4", $parsed['user'], $parsed['pass'], [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+        $this->url = getenv("CLEARDB_DATABASE_URL");
+
+        $dbparts = parse_url($this->url);
+
+        $hostname = $dbparts['host'];
+        $username = $dbparts['user'];
+        $password = $dbparts['pass'];
+        $database = ltrim($dbparts['path'],'/');
+
+        $this->conn = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
+        // set the PDO error mode to exception
+        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo "Connected successfully";
+        
       } catch(PDOException $e) {
         echo 'Connection Error: ' . $e->getMessage();
       }
