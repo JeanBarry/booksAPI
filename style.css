@@ -30,6 +30,7 @@ header{
 
 .nav-item a{
     text-decoration: none;
+    color: rgb(255, 255, 255);
 }
 
 .nav-item a:visited{
