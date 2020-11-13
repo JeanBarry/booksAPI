@@ -14,7 +14,7 @@ class Database{
       $this->conn = null;
 
       try { 
-        $newuri = $this->url = getenv('JAWSDB_URL');
+        $newuri = $this->url = getenv('CLEARDB_DATABASE_URL');
         $parsed = parse_url($newuri);
         $dbname = ltrim($parsed['path']. '/'); // PATH has prepended / at the beginning, it needs to be removed
         // Connecting to the database
