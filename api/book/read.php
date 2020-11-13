@@ -23,7 +23,7 @@ if($num > 0){
         extract($row);
 
         $book_item = array(
-            'id' => $book_id,
+            'book_id' => $book_id,
             'title' => $title,
             'author' => $author,
             'category' => $category
