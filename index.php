@@ -1,7 +1,3 @@
-<?php 
-    include_once('config/Database.php'); 
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +10,8 @@
     <header>
         <nav class="navbar">
             <ul class="nav-list">
-                <li class="nav-item"><a href="#">Home</a></li>
-                <li class="nav-item"><a href="#">Books</a></li>
+                <li class="nav-item"><a href="index.php">Home</a></li>
+                <li class="nav-item"><a href="books.php">Books</a></li>
             </ul>
         </nav>
     </header>
