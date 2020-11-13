@@ -4,7 +4,7 @@ header('Access-Control-Allow-Origin: *');
 header('Content-type: application/json');
 
 include_once('../../config/Database.php');
-include_once('../../model/Book.php');
+include_once('../../models/Book.php');
 
 $database = new Database();
 $db = $database->connect();
@@ -18,19 +18,18 @@ $num = $result->rowCount();
 
 if($num > 0){
     $book_array = array();
-    $book_array['data'] = array();
 
     while($row = $result->fetch(PDO::FETCH_ASSOC)){
         extract($row);
 
-        $post_item = array(
-            'id' => $id,
+        $book_item = array(
+            'id' => $book_id,
             'title' => $title,
             'author' => $author,
             'category' => $category
         );
 
-        array_push($post_array['data'], $post_item);
+        array_push($book_array, $book_item);
     }
 
     echo json_encode($book_array);

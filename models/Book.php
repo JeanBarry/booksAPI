@@ -15,7 +15,7 @@
 
         public function read(){
 
-            $query = "SELECT * from {$this->table}";
+            $query = "SELECT * FROM {$this->table}";
 
             $stmt = $this->conn->prepare($query);
 
