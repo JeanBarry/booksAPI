@@ -1,10 +1,9 @@
 <?php 
-    
+
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
-    header('Access-Control-Allow-Methods: POST');
+    header('Access-Control-Allow-Methods: DELETE');
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
-
 
     include_once('../../config/Database.php');
     include_once('../../models/Book.php');
@@ -16,18 +15,15 @@
 
     $data = json_decode(file_get_contents("php://input"));
 
-    $book->title = $data->title;
-    $book->author = $data->author;
-    $book->category = $data->category;
+    $book->book_id = $data->book_id;
 
-    if($book->create()) {
+    if($book->delete()){
         echo json_encode(
-          array('message' => 'Book Added')
+            array('message'=>'Book was deleted')
         );
-      } else {
+    }else{
         echo json_encode(
-          array('message' => 'Book Not Added')
+            array('message'=>'Book was not deleted')
         );
-      }
-
+    }
 ?>

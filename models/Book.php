@@ -61,6 +61,50 @@
 
             return false;
         }
+
+        public function update(){
+
+            $query = "UPDATE {$this->table} SET title = :title, author = :author, category = :category WHERE book_id = :book_id";
+
+            $stmt = $this->conn->prepare($query);
+
+            $this->book_id = htmlspecialchars(strip_tags($this->book_id));
+            $this->title = htmlspecialchars(strip_tags($this->title));
+            $this->author = htmlspecialchars(strip_tags($this->author));
+            $this->category = htmlspecialchars(strip_tags($this->category));
+
+            $stmt->bindParam(":title", $this->title);
+            $stmt->bindParam(":author", $this->author);
+            $stmt->bindParam(":category", $this->category);
+            $stmt->bindParam(":book_id", $this->book_id);
+
+            if($stmt->execute()){
+                return true;
+            }
+
+            printf("Error: %S.\n", $stmt->error);
+
+            return false;
+        }
+
+        public function delete(){
+
+            $query = "DELETE FROM {$this->table} WHERE book_id = :book_id";
+
+            $stmt = $this->conn->prepare($query);
+
+            $this->book_id = htmlspecialchars(strip_tags($this->book_id));
+
+            $stmt->bindParam(":book_id", $this->book_id);
+
+            if($stmt->execute()){
+                return true;
+            }
+
+            printf("Error: %S.\n", $stmt->error);
+
+            return false;
+        }
     }
 
 ?>
