@@ -40,7 +40,8 @@
 
         public function create(){
 
-            $query = "INSERT INTO {$this->table} (title, author, category) VALUES (?, ?, ?);";
+            $query = "INSERT INTO {$this->table} VALUES (null, ?, ?, ?);";
+            
 
             $stmt = $this->conn->prepare($query);
 
@@ -52,6 +53,8 @@
             $stmt->bindParam(2, $this->author);
             $stmt->bindParam(3, $this->category);
 
+            echo $query;
+            
             if($stmt->execute()){
                 return true;
             }
