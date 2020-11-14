@@ -24,11 +24,11 @@
 
     if($book->update()){
       echo json_encode(
-      array('message' => 'Book Updated')
+      array('message' => 'Book updated')
       );
     } else {
       echo json_encode(
-      array('message' => 'Book Not Updated')
+      array('message' => 'Book not updated')
       );
     }
 
