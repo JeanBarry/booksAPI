@@ -40,7 +40,7 @@
 
         public function create(){
 
-            $query = "INSERT INTO {$this->table} (title, author, category) VALUES('?', '?', '?');;";
+            $query = "INSERT INTO {$this->table} (title, author, category) VALUES (?, ?, ?);";
 
             $stmt = $this->conn->prepare($query);
 

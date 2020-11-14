@@ -14,7 +14,7 @@
 
     $book = new Book($db);
 
-    $data = json_decode(file_get_contents('php://input'));
+    $data = json_decode(file_get_contents("php://input"));
 
     $book->book_id = $data->book_id;
     $book->title = $data->title;
