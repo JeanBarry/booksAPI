@@ -21,7 +21,7 @@
     $book->author = $data->author;
     $book->category = $data->category;
 
-    if($post->create()) {
+    if($book->create()) {
         echo json_encode(
           array('message' => 'Book Added')
         );
