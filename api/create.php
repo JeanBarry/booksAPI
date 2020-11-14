@@ -5,9 +5,8 @@
     header('Access-Control-Allow-Methods: POST');
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
-
-    include_once('../../config/Database.php');
-    include_once('../../models/Book.php');
+    include_once('../config/Database.php');
+    include_once('../models/Book.php');
 
     $database = new Database();
     $db = $database->connect();

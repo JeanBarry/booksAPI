@@ -1,13 +1,12 @@
 <?php 
-    
+
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
-    header('Access-Control-Allow-Methods: PUT');
+    header('Access-Control-Allow-Methods: DELETE');
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
-
-    include_once('../../config/Database.php');
-    include_once('../../models/Book.php');
+    include_once('../config/Database.php');
+    include_once('../models/Book.php');
 
     $database = new Database();
     $db = $database->connect();
@@ -18,16 +17,13 @@
 
     $book->book_id = $data->book_id;
 
-    $book->title = $data->title;
-    $book->author = $data->author;
-    $book->category = $data->category;
-
-    if($book->update()){
+    if($book->delete()){
         echo json_encode(
-            array('message' => 'Book Updated')
-          );
-        } else {
-          echo json_encode(
-            array('message' => 'Book Not Updated')
-          );
-        }
+            array('message'=>'Book was deleted')
+        );
+    }else{
+        echo json_encode(
+            array('message'=>'Book was not deleted')
+        );
+    }
+?>
