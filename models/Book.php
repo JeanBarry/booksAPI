@@ -37,6 +37,29 @@
 
             return $stmt;
         }
+
+        public function create(){
+
+            $query = "INSERT INTO {$this->table} (title, author, category) VALUES('?', '?', '?');;";
+
+            $stmt = $this->conn->prepare($query);
+
+            $this->title = htmlspecialchars(strip_tags($this->title));
+            $this->author = htmlspecialchars(strip_tags($this->author));
+            $this->category = htmlspecialchars(strip_tags($this->category));
+
+            $stmt->bindParam(1, $this->title);
+            $stmt->bindParam(2, $this->author);
+            $stmt->bindParam(3, $this->category);
+
+            if($stmt->execute()){
+                return true;
+            }
+
+            printf("Error: %s.\n", $stmt->error);
+
+            return false;
+        }
     }
 
 ?>
