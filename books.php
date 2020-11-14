@@ -1,6 +1,6 @@
 <?php 
 
-    $read_url = "http://localhost:81/simpleAPI/api/book/read.php";
+    $read_url = "https://secure-harbor-74685.herokuapp.com/api/book/read.php";
     $books = json_decode(file_get_contents($read_url));
 
 ?>
