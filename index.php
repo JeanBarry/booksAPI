@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BooksAPI</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <nav class="navbar">
@@ -15,12 +17,11 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <section class="main-section">
-            <h1 class="main-title">BooksAPI</h1>
-            <p class="main-subtitle">Simple API for books</p>
-        </section>
+    <main class="main-section">
+        <h1 class="main-title">BooksAPI</h1>
+        <p class="main-subtitle">Simple API for books</p>
     </main>
-    
+
 </body>
+
 </html>
