@@ -40,7 +40,7 @@
 
         public function create(){
 
-            $query = "INSERT INTO {$this->table} VALUES (null, '?', '?', '?');";
+            $query = "INSERT INTO {$this->table} VALUES (null, :title, :author, :category);";
             
 
             $stmt = $this->conn->prepare($query);
@@ -49,11 +49,9 @@
             $this->author = htmlspecialchars(strip_tags($this->author));
             $this->category = htmlspecialchars(strip_tags($this->category));
 
-            $stmt->bindParam(1, $this->title);
-            $stmt->bindParam(2, $this->author);
-            $stmt->bindParam(3, $this->category);
-
-            echo $query;
+            $stmt->bindParam(":title", $this->title);
+            $stmt->bindParam(":author", $this->author);
+            $stmt->bindParam(":category", $this->category);
 
             if($stmt->execute()){
                 return true;
